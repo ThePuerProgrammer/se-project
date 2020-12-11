@@ -59,8 +59,8 @@ public class DiagPanel {
         diagnosePatientDataButton.addActionListener(jButtonListener);
         quitButton.addActionListener(jButtonListener);
 
-        leftCanvas = new DiagnoseCanvas(this);
-        rightCanvas = new UploadCanvas(this);
+        leftCanvas = new DiagnoseCanvas();
+        rightCanvas = new UploadCanvas();
 
         textAreaDimension = new Dimension(WIDTH / 6, 20);
 

@@ -12,13 +12,11 @@ import javax.swing.JPanel;
 public class UploadCanvas extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private DiagPanel diagPanel;
     private ArrayList<String> stringArrayList = new ArrayList<>();
     private int w;
     private int h;
     
-    public UploadCanvas(DiagPanel diagPanel) {
-        this.diagPanel = diagPanel;
+    public UploadCanvas() {
         w = DiagPanel.WIDTH / 3 + 100;
         h = DiagPanel.HEIGHT / 2 + 90;
         setPreferredSize(new Dimension(w, h));
