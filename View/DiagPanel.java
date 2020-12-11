@@ -19,8 +19,10 @@ public class DiagPanel {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 1000;
     private JFrame window;    
-    private JButton diagnoseButton;
-    private JButton deliverResultsButton;
+    private JButton establishConnectionButton;
+    private JButton downloadReslultsButton;
+    private JButton generateXMLFromPatientDataButton;
+    private JButton diagnosePatientDataButton;
     private JButton quitButton;
     private Dimension buttonDimension = new Dimension(150, 50);
     private JButtonListener jButtonListener;
@@ -37,18 +39,31 @@ public class DiagPanel {
     private JTextArea normalNucleoliArea;
     private JTextArea mitosesArea;
     private JTextArea classArea;
+    private Dimension textAreaDimension;
 
     public DiagPanel(JFrame window) {
+
         this.window = window;
-        diagnoseButton = new JButton("Establish Connection");
-        deliverResultsButton = new JButton("Diagnose User");
+
+        establishConnectionButton = new JButton("Establish Connection");
+        downloadReslultsButton = new JButton("Download Results");
+        generateXMLFromPatientDataButton = new JButton("Generate XML");
+        diagnosePatientDataButton = new JButton("Diagnose Patient");
         quitButton = new JButton("Quit");
+
         jButtonListener = new JButtonListener(this);
-        diagnoseButton.addActionListener(jButtonListener);
-        deliverResultsButton.addActionListener(jButtonListener);
+
+        establishConnectionButton.addActionListener(jButtonListener);
+        downloadReslultsButton.addActionListener(jButtonListener);
+        generateXMLFromPatientDataButton.addActionListener(jButtonListener);
+        diagnosePatientDataButton.addActionListener(jButtonListener);
         quitButton.addActionListener(jButtonListener);
+
         leftCanvas = new DiagnoseCanvas(this);
         rightCanvas = new UploadCanvas(this);
+
+        textAreaDimension = new Dimension(WIDTH / 6, 20);
+
         patientIDArea = new JTextArea("Patient ID");
         clumpThicknessArea = new JTextArea("Clump Thickness");
         uniformityCellSizeArea = new JTextArea("Uniformity Cell Size");
@@ -60,6 +75,19 @@ public class DiagPanel {
         normalNucleoliArea = new JTextArea("Normal Nucleoli");
         mitosesArea = new JTextArea("Mitoses");
         classArea = new JTextArea("Class");
+
+        patientIDArea.setPreferredSize(textAreaDimension);
+        clumpThicknessArea.setPreferredSize(textAreaDimension);
+        uniformityCellSizeArea.setPreferredSize(textAreaDimension);
+        uniformityCellShapeArea.setPreferredSize(textAreaDimension);
+        marginalAdhesionArea.setPreferredSize(textAreaDimension);
+        singleEpithelialCellSizeArea.setPreferredSize(textAreaDimension);
+        bareNucleiArea.setPreferredSize(textAreaDimension);
+        blandChromatinArea.setPreferredSize(textAreaDimension);
+        normalNucleoliArea.setPreferredSize(textAreaDimension);
+        mitosesArea.setPreferredSize(textAreaDimension);
+        classArea.setPreferredSize(textAreaDimension);
+
     }
 
     public void init() {
@@ -88,12 +116,18 @@ public class DiagPanel {
         textArePanel.add(mitosesArea);
         textArePanel.add(classArea);
 
-        southPanel.add(BorderLayout.NORTH, textArePanel);
-        diagnoseButton.setPreferredSize(buttonDimension);
-        southPanel.add(diagnoseButton);
-        deliverResultsButton.setPreferredSize(buttonDimension);
-        southPanel.add(deliverResultsButton);
+        southPanel.add(textArePanel);
+
+        establishConnectionButton.setPreferredSize(buttonDimension);
+        downloadReslultsButton.setPreferredSize(buttonDimension);
+        generateXMLFromPatientDataButton.setPreferredSize(buttonDimension);
+        diagnosePatientDataButton.setPreferredSize(buttonDimension);
         quitButton.setPreferredSize(buttonDimension);
+
+        southPanel.add(establishConnectionButton);
+        southPanel.add(downloadReslultsButton);
+        southPanel.add(generateXMLFromPatientDataButton);
+        southPanel.add(diagnosePatientDataButton);
         southPanel.add(quitButton);
 
         westPanel.add(leftCanvas);
@@ -104,12 +138,22 @@ public class DiagPanel {
         cp.add(BorderLayout.SOUTH, southPanel);
 
     }
-    public JButton getDeliverResultsButton() {
-        return deliverResultsButton;
+
+
+    public JButton getgenerateXMLFromPatientDataButton() {
+        return generateXMLFromPatientDataButton;
     }
 
-    public JButton getDiagnoseButton() {
-        return diagnoseButton;
+    public JButton getestablishConnectionButton() {
+        return establishConnectionButton;
+    }
+
+    public JButton getDownloadReslultsButton() {
+        return downloadReslultsButton;
+    }
+
+    public JButton getDiagnosePatientDataButton() {
+        return diagnosePatientDataButton;
     }
 
     public JButton getQuitButton() {

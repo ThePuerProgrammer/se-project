@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<se_project_updated_a429139d>",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "se_project_updated_a429139d"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MyServer<se_project_updated_a429139d>",
+            "request": "launch",
+            "mainClass": "tcp_connect.MyServer",
+            "projectName": "se_project_updated_a429139d"
+        }
+    ]
+}

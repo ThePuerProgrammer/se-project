@@ -6,17 +6,16 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import Model.PatientUser;
+import Model.DiagnosePatient;
+import Model.Patient;
 import Model.XMLDocBuilder;
+import Model.XMLPatientDataParser;
 import View.DiagPanel;
 
 public class JButtonListener implements ActionListener {
 
     private DiagPanel diagPanel;
     private ArrayList<String> ips = new ArrayList<>();
-    private int count = 0;
-    private Thread socketThread;
-    private PatientUser patientUser;
 
     public JButtonListener(DiagPanel diagPanel) {
         this.diagPanel = diagPanel;
@@ -28,26 +27,31 @@ public class JButtonListener implements ActionListener {
 
         JButton b = (JButton) e.getSource();
 
-        if (b == diagPanel.getDiagnoseButton()) {
+        if (b == diagPanel.getestablishConnectionButton()) {
 
-            if (count == 2) count = 0;
+        } else if (b == diagPanel.getDiagnosePatientDataButton()) {
 
-            diagPanel.getLeftCanvas().getStringArrayList().add("Establishing Connection...");
+            diagPanel.getLeftCanvas().getStringArrayList().add("Parsing data from /doc/patient_diagnosis_data.xml");
+
+            XMLPatientDataParser xmlPatientDataParser = new XMLPatientDataParser();
+            xmlPatientDataParser.parse();
+
+            diagPanel.getLeftCanvas().getStringArrayList().add("Establishing Patient");
+            Patient patient = new Patient();
+            patient.setPatientResults(xmlPatientDataParser.getParsedData());
+
+            diagPanel.getLeftCanvas().getStringArrayList().add("Processing Diagnosis");
+            DiagnosePatient diagnosePatient = new DiagnosePatient(patient);
+            diagnosePatient.diagnose();
+            String result = diagnosePatient.getClassification() == 4 ? "Cancerous" : "Benign";
+
+
+            diagPanel.getLeftCanvas().getStringArrayList().add("Diagnosis Complete");
+            diagPanel.getLeftCanvas().getStringArrayList().add("Results: " + result);
+
             diagPanel.getLeftCanvas().repaint();
-            
-            socketThread = new Thread(()->{
-                patientUser = new PatientUser(ips.get(count));
-            });
-            
-            
-            if (patientUser.getS().isConnected()) {
-                diagPanel.getLeftCanvas().getStringArrayList().add("Connection Established to: ");
-                diagPanel.getLeftCanvas().repaint();
-            } else {
-                diagPanel.getLeftCanvas().getStringArrayList().add("Unable to establish connection.");
-                diagPanel.getLeftCanvas().repaint();
-            }
-        } else if (b == diagPanel.getDeliverResultsButton()) {
+
+        }else if (b == diagPanel.getgenerateXMLFromPatientDataButton()) {
 
             diagPanel.getRightCanvas().getStringArrayList().add("Values Submitted");
             
