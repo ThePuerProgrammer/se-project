@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/thepuerprogrammer/Desktop/jarfiles/log4j-api-2.14.0.jar",
+        "/Users/thepuerprogrammer/Desktop/jarfiles/log4j-core-2.14.0.jar"
+    ]
+}

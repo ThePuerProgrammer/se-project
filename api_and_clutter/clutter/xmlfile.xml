@@ -1,0 +1,29 @@
+<!DOCTYPE Dataset [
+    <!ELEMENT Patient (clump_thickness, uniformity_cell_size, uniformity_cell_shape, marginal_adhesion, 
+        single_epithelial_cell_size, bare_nuclei, bland_chromatin, normal_nucleoli, mitoses, class) >
+    <!ELEMENT clump_thickness (#PCDATA) >
+    <!ELEMENT uniformity_cell_size (#PCDATA) >
+    <!ELEMENT uniformity_cell_shape (#PCDATA) >
+    <!ELEMENT marginal_adhesion (#PCDATA) >
+    <!ELEMENT single_epithelial_cell_size (#PCDATA) >
+    <!ELEMENT bare_nuclei (#PCDATA) >
+    <!ELEMENT bland_chromatin (#PCDATA) >
+    <!ELEMENT normal_nucleoli (#PCDATA) >
+    <!ELEMENT mitoses (#PCDATA) >
+    <!ELEMENT class (#PCDATA) > 
+]>
+
+<Dataset>
+    <Patient id='1000025'>
+        <clump_thickness>5</clump_thickness>
+        <uniformity_cell_size>1</uniformity_cell_size>
+        <uniformity_cell_shape>1</uniformity_cell_shape>
+        <marginal_adhesion>1</marginal_adhesion>
+        <single_epithelial_cell_size>2</single_epithelial_cell_size>
+        <bare_nuclei>1</bare_nuclei>
+        <bland_chromatin>2</bland_chromatin>
+        <normal_nucleoli>2</normal_nucleoli>
+        <mitoses>1</mitoses>
+        <class>4</class>
+    </Patient>
+</Dataset>
