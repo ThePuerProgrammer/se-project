@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Controller.JButtonListener;
-import Model.Parser;
-import tcp_connect.MyServer;
 
 public class DiagPanel {
 
@@ -21,7 +19,6 @@ public class DiagPanel {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 1000;
     private JFrame window;    
-    private JButton connectButton;
     private JButton diagnoseButton;
     private JButton deliverResultsButton;
     private JButton quitButton;
@@ -29,7 +26,6 @@ public class DiagPanel {
     private JButtonListener jButtonListener;
     private DiagnoseCanvas leftCanvas;
     private UploadCanvas rightCanvas;
-    private MyServer myServer;
     private JTextArea patientIDArea;
     private JTextArea clumpThicknessArea;
     private JTextArea uniformityCellSizeArea;
@@ -67,9 +63,6 @@ public class DiagPanel {
     }
 
     public void init() {
-
-        myServer = new MyServer();
-
         Container cp = window.getContentPane();
 
         JPanel eastPanel = new JPanel();
@@ -109,6 +102,7 @@ public class DiagPanel {
         cp.add(BorderLayout.EAST, eastPanel);
         cp.add(BorderLayout.WEST, westPanel);
         cp.add(BorderLayout.SOUTH, southPanel);
+
     }
     public JButton getDeliverResultsButton() {
         return deliverResultsButton;

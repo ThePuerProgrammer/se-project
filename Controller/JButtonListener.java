@@ -2,22 +2,13 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Document;
-
-import Model.Parser;
 import Model.PatientUser;
+import Model.XMLDocBuilder;
 import View.DiagPanel;
-import tcp_connect.MyServer;
 
 public class JButtonListener implements ActionListener {
 
@@ -58,7 +49,7 @@ public class JButtonListener implements ActionListener {
             }
         } else if (b == diagPanel.getDeliverResultsButton()) {
 
-            diagPanel.getRightCanvas().setConfirmation("Values Parsed");
+            diagPanel.getRightCanvas().getStringArrayList().add("Values Submitted");
             
             ArrayList<String> values = new ArrayList<>();
             values.add(diagPanel.getPatientIDArea().getText());
@@ -73,22 +64,12 @@ public class JButtonListener implements ActionListener {
             values.add(diagPanel.getMitosesArea().getText());
             values.add(diagPanel.getClassArea().getText());
 
-            String[] v = new String[values.size()];
-            for (int i = 0; i < values.size(); ++i) {
-                v[i] = values.get(i);
-            }
-            Document xmlDocument = Parser.toXML(v);
+            XMLDocBuilder xmlDocBuilder = new XMLDocBuilder(values);
+            xmlDocBuilder.buildAndSaveXMLDoc();
 
-            // write the content into xml file
-            try {
-                DOMSource source = new DOMSource(xmlDocument);
-                FileWriter writer = new FileWriter(new File("/Users/thepuerprogrammer/Documents/dpp/UCO/cssem4/swe1/SE_Project/patient_results.xml"));
-                StreamResult result = new StreamResult(writer);
+            diagPanel.getRightCanvas().getStringArrayList().add(".xml generated in /doc/patient_diagnosis_data.xml");
 
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                Transformer transformer = transformerFactory.newTransformer();
-                transformer.transform(source, result);
-            } catch (Exception e2) {e2.printStackTrace();}
+            diagPanel.getRightCanvas().repaint();
 
         } else if (b == diagPanel.getQuitButton()) {
             System.exit(0);
