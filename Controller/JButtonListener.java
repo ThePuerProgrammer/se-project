@@ -10,6 +10,8 @@ import Model.DiagnosePatient;
 import Model.Patient;
 import Model.XMLDocBuilder;
 import Model.XMLPatientDataParser;
+import Model.connect.EstablishClient;
+import Model.connect.EstablishServer;
 import View.DiagPanel;
 
 public class JButtonListener implements ActionListener {
@@ -29,7 +31,18 @@ public class JButtonListener implements ActionListener {
 
         if (b == diagPanel.getEstablishServerButton()) {
 
+            EstablishServer server = new EstablishServer();
+            diagPanel.getLeftCanvas().getStringArrayList().add("Established a listener on port " + server.getLISTENING_PORT());
+            diagPanel.getLeftCanvas().repaint();
+
         } else if (b == diagPanel.getestablishConnectionButton()) {
+            final String IP = "98.172.202.127";
+            final int PORT = 32001;
+            EstablishClient client = new EstablishClient();
+            client.establishConnection(IP, PORT);
+            diagPanel.getLeftCanvas().getStringArrayList().add("Connection to server Established");
+            diagPanel.getLeftCanvas().repaint();
+
 
         } else if (b == diagPanel.getDiagnosePatientDataButton()) {
 
