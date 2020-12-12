@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><Dataset>
-    <Patient id="6">
-        <clump_thickness>7</clump_thickness>
-        <uniformity_cell_size>7</uniformity_cell_size>
-        <uniformity_cell_shape>7</uniformity_cell_shape>
-        <marginal_adhesion>7</marginal_adhesion>
-        <single_epithelial_cell_size>7</single_epithelial_cell_size>
-        <bare_nuclei>3</bare_nuclei>
-        <bland_chromatin>2</bland_chromatin>
-        <normal_nucleoli>1</normal_nucleoli>
-        <mitoses>2</mitoses>
-        <class>3</class>
+    <Patient id="7">
+        <clump_thickness>5</clump_thickness>
+        <uniformity_cell_size>3</uniformity_cell_size>
+        <uniformity_cell_shape>1</uniformity_cell_shape>
+        <marginal_adhesion>8</marginal_adhesion>
+        <single_epithelial_cell_size>6</single_epithelial_cell_size>
+        <bare_nuclei>6</bare_nuclei>
+        <bland_chromatin>4</bland_chromatin>
+        <normal_nucleoli>2</normal_nucleoli>
+        <mitoses>9</mitoses>
+        <class>7</class>
     </Patient>
 </Dataset>

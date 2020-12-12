@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PatientTest",
+            "request": "launch",
+            "mainClass": "Test.PatientTest",
+            "projectName": "se_project_updated_a429139d"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

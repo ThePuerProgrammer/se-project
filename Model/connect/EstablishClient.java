@@ -1,0 +1,38 @@
+package Model.connect;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+public class EstablishClient {
+
+    // PRIVATE VARIABLES
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    private Socket connection;
+    private InputStream in;
+    private OutputStream out;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // PUBLIC CONSTRUCTOR
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public EstablishClient() {
+
+    } // EstablishClient()
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // CREATE THE CONNECTION
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public void establishConnection(String computerName, int listeningPort) {
+        try {
+        connection = new Socket(computerName,listeningPort);
+        in = connection.getInputStream();
+        out = connection.getOutputStream();
+        } catch (IOException e) {
+            System.out.println("Attempt to create connection failed with error: " + e);
+            return;
+        }
+    }  // establishConnection()
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+}

@@ -27,7 +27,9 @@ public class JButtonListener implements ActionListener {
 
         JButton b = (JButton) e.getSource();
 
-        if (b == diagPanel.getestablishConnectionButton()) {
+        if (b == diagPanel.getEstablishServerButton()) {
+
+        } else if (b == diagPanel.getestablishConnectionButton()) {
 
         } else if (b == diagPanel.getDiagnosePatientDataButton()) {
 

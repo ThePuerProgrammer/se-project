@@ -19,6 +19,7 @@ public class DiagPanel {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 1000;
     private JFrame window;    
+    private JButton establishServerButton;
     private JButton establishConnectionButton;
     private JButton downloadReslultsButton;
     private JButton generateXMLFromPatientDataButton;
@@ -45,6 +46,7 @@ public class DiagPanel {
 
         this.window = window;
 
+        establishServerButton = new JButton("Establish Server");
         establishConnectionButton = new JButton("Establish Connection");
         downloadReslultsButton = new JButton("Download Results");
         generateXMLFromPatientDataButton = new JButton("Generate XML");
@@ -53,6 +55,7 @@ public class DiagPanel {
 
         jButtonListener = new JButtonListener(this);
 
+        establishServerButton.addActionListener(jButtonListener);
         establishConnectionButton.addActionListener(jButtonListener);
         downloadReslultsButton.addActionListener(jButtonListener);
         generateXMLFromPatientDataButton.addActionListener(jButtonListener);
@@ -118,12 +121,14 @@ public class DiagPanel {
 
         southPanel.add(textArePanel);
 
+        establishServerButton.setPreferredSize(buttonDimension);
         establishConnectionButton.setPreferredSize(buttonDimension);
         downloadReslultsButton.setPreferredSize(buttonDimension);
         generateXMLFromPatientDataButton.setPreferredSize(buttonDimension);
         diagnosePatientDataButton.setPreferredSize(buttonDimension);
         quitButton.setPreferredSize(buttonDimension);
 
+        southPanel.add(establishServerButton);
         southPanel.add(establishConnectionButton);
         southPanel.add(downloadReslultsButton);
         southPanel.add(generateXMLFromPatientDataButton);
@@ -146,6 +151,10 @@ public class DiagPanel {
 
     public JButton getestablishConnectionButton() {
         return establishConnectionButton;
+    }
+
+    public JButton getEstablishServerButton() {
+        return establishServerButton;
     }
 
     public JButton getDownloadReslultsButton() {
